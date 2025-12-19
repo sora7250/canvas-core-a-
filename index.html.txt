@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Core | 創造性と技術の融合</title>
+    <style>
+        :root {
+            --primary-bg: #f8fafc;
+            --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #22c55e 50%, #f59e0b 100%);
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+        }
+        body { margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(--primary-bg); color: var(--text-dark); overflow-x: hidden; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        header { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; box-sizing: border-box; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: bold; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 20px; line-height: 1.2; }
+        .cta-button { padding: 15px 40px; background: var(--accent-gradient); color: white; text-decoration: none; border-radius: 50px; font-weight: bold; transition: transform 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .cta-button:hover { transform: translateY(-5px); }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding: 100px 10%; background: white; }
+        .stat-item { text-align: center; padding: 20px; }
+        .stat-number { font-size: 3.5rem; font-weight: 900; color: #0ea5e9; }
+        .stat-label { color: var(--text-light); font-weight: bold; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <header><div class="logo">Canvas Core</div></header>
+    <section class="hero reveal">
+        <h1>Unleash Creativity,<br>Build the Future.</h1>
+        <p>自由な発想（Canvas）と確かな技術力（Core）で、アプリの可能性を無限に広げる。</p>
+        <a href="#" class="cta-button">プロジェクトを開始する</a>
+    </section>
+    <section class="stats">
+        <div class="stat-item reveal"><div class="stat-number">4.7</div><div class="stat-label">User Satisfaction</div></div>
+        <div class="stat-item reveal"><div class="stat-number">99.9%</div><div class="stat-label">Uptime</div></div>
+        <div class="stat-item reveal"><div class="stat-number">24h</div><div class="stat-label">Response Time</div></div>
+    </section>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
